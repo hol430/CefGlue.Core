@@ -57,7 +57,7 @@
             headers.Add("Cache-Control", "private");
             response.SetHeaderMap(headers);
 
-            responseLength = responseData.LongLength;
+            responseLength = responseData.Length;
             redirectUrl = null;
         }
 

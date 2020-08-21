@@ -9,7 +9,18 @@ namespace Xilium.CefGlue.Interop
     
     internal static unsafe partial class libcef
     {
-        // CefExecuteProcess
+        /// <summary>
+        /// This function should be called from the application entry point function to
+        /// execute a secondary process. It can be used to run secondary processes from
+        /// the browser client executable (default behavior) or from a separate
+        /// executable specified by the CefSettings.browser_subprocess_path value. If
+        /// called for the browser process (identified by no "type" command-line value)
+        /// it will return immediately with a value of -1. If called for a recognized
+        /// secondary process it will block until the process should exit and then return
+        /// the process exit code. The |application| parameter may be NULL. The
+        /// |windows_sandbox_info| parameter is only used on Windows and may be NULL (see
+        /// cef_sandbox_win.h for details).
+        /// </summary>
         [DllImport(libcef.DllName, EntryPoint = "cef_execute_process", CallingConvention = libcef.CEF_CALL)]
         public static extern int execute_process(cef_main_args_t* args, cef_app_t* application, void* windows_sandbox_info);
         

@@ -6,6 +6,7 @@
     using System.Diagnostics;
     using Xilium.CefGlue.Wrapper;
     using System.Threading;
+    using System.Reflection;
 
     public abstract class DemoApp : IDisposable
     {
@@ -54,6 +55,7 @@
             catch (Exception ex)
             {
                 PlatformMessageBox(ex.ToString());
+                Console.WriteLine(ex.ToString());
                 return 1;
             }
         }
@@ -187,13 +189,13 @@
 
         private void PopupWindowCommand(object sender, EventArgs e)
         {
-            var url = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(new Uri(typeof(DemoApp).Assembly.CodeBase).LocalPath), "transparency.html");
+            var url = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(new Uri(typeof(DemoApp).GetTypeInfo().Assembly.CodeBase).LocalPath), "transparency.html");
             MainView.NewWebView(url, false);
         }
 
         private void TransparentPopupWindowCommand(object sender, EventArgs e)
         {
-            var url = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(new Uri(typeof(DemoApp).Assembly.CodeBase).LocalPath), "transparency.html");
+            var url = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(new Uri(typeof(DemoApp).GetTypeInfo().Assembly.CodeBase).LocalPath), "transparency.html");
             MainView.NewWebView(url, true);
         }
 

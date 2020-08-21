@@ -28,7 +28,7 @@ public static class Utils
                 foreach (string drs in System.IO.Directory.GetDirectories(SourcePath))
                 {
                     System.IO.DirectoryInfo directoryInfo = new DirectoryInfo(drs);
-                    if (MoveFolderContents(drs, System.IO.Path.Combine(DestinationPath, directoryInfo.Name) == false))
+                    if (MoveFolderContents(drs, System.IO.Path.Combine(DestinationPath, directoryInfo.Name)) == false)
                     {
                         return false;
                     }
